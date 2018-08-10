@@ -1,0 +1,79 @@
+buildscript {
+    ext.kotlin_version = '1.2.41'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
+        maven { url "https://kotlin.bintray.com/kotlinx" }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.14"
+        classpath "com.pascalwelsch.gitversioner:gitversioner:0.3.1"
+    }
+}
+
+apply plugin: "idea"
+apply plugin: "kotlin2js"
+apply plugin: "maven-publish"
+apply plugin: 'org.jetbrains.dokka'
+apply plugin: "com.pascalwelsch.gitversioner"
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+    maven { url "https://dl.bintray.com/danfma/kotlin-kodando" }
+}
+
+dependencies {
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compileOnly "org.jetbrains.kotlinx:kotlinx-html-js:0.6.8"
+    compileOnly "br.danfma.kodando:kodando-history:0.3.0"
+    compileOnly "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:0.23.3"
+}
+
+group "me.theghostin"
+version "1.0.0"
+
+task sourcesJar(type: Jar) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+}
+
+task wrapper(type: Wrapper) {
+    // FIXME: while this issue (https://github.com/Kotlin/dokka/issues/265) is fixed in newer dokka plugins
+    // newer dokka plugins don't work because of this https://github.com/Kotlin/dokka/issues/212
+    gradleVersion = '4.4.1' //version required
+}
+
+task cleanDocs(type: Delete) {
+    delete "$rootDir/docs"
+}
+
+gitVersioner {
+    addSnapshot false
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+
+compileKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.outputFile = "$project.buildDir.path/js/${project.name}.js"
+    kotlinOptions.moduleKind = 'commonjs'
+    kotlinOptions.main = "call"
+}
+
+dokka {
+    outputFormat = "html"
+    outputDirectory = "$rootDir/docs"
+    impliedPlatforms = ["JS"]
+    // reportUndocumented = false
+}
+dokka.dependsOn cleanDocs
+build.dependsOn dokka
