@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Nimble.inbox - me.theghostin.nimble</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">me.theghostin.nimble</a>&nbsp;/&nbsp;<a href="../index.html">me.theghostin.nimble</a>&nbsp;/&nbsp;<a
+        href="index.html">Nimble</a>&nbsp;/&nbsp;<a href=".">inbox</a><br/>
+<br/>
+<h1>inbox</h1>
+<a name="me.theghostin.nimble.Nimble$inbox(kotlin.Function1((me.theghostin.nimble.Nimble.Msg, me.theghostin.nimble.Nimble.Model)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">inbox</span><span class="symbol">(</span><span
+        class="identifier"
+        id="me.theghostin.nimble.Nimble$inbox(kotlin.Function1((me.theghostin.nimble.Nimble.Msg, me.theghostin.nimble.Nimble.Model)))/inbox">inbox</span><span
+        class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">Msg</span><span
+        class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Model</span><span
+        class="symbol">)</span><span class="symbol">: </span><a
+        href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Handle updates to the <code>model</code></p>
+<p>The latest result of <code>inbox</code> is always available as <code>model</code> inside the <code>app</code> scope
+</p>
+<p><strong>Example:</strong></p>
+<pre><code>import me.theghostin.nimble.app
+import me.theghostin.nimble.html
+
+data class Model(val switch: Boolean = false)
+
+sealed class Msg
+object Flip : Msg()
+
+fun main() {
+    app&lt;Msg, Model&gt;(Model()) {
+        inbox { when (it) {
+            Flip -&gt; model.copy(switch = !model.switch)
+        }}
+    }
+}
+</code></pre>
+</BODY>
+</HTML>

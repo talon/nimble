@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Router.routeTo - me.theghostin.nimble</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">me.theghostin.nimble</a>&nbsp;/&nbsp;<a href="../index.html">me.theghostin.nimble</a>&nbsp;/&nbsp;<a
+        href="index.html">Router</a>&nbsp;/&nbsp;<a href=".">routeTo</a><br/>
+<br/>
+<h1>routeTo</h1>
+<a name="me.theghostin.nimble.Router$routeTo(kotlin.String)"></a>
+<code><span class="keyword">fun </span><span class="identifier">routeTo</span><span class="symbol">(</span><span
+        class="identifier" id="me.theghostin.nimble.Router$routeTo(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a
+        href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+        class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+        href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>update the URL</p>
+<p><strong>Example:</strong></p>
+<pre><code>val routeTo = router {
+  "/:thing".route {
+     console.log(it["thing"]!!)
+  }
+  "/redirect".route {
+    routeTo("/cats")
+  }
+}
+routeTo("/dogs")
+</code></pre>
+</BODY>
+</HTML>

@@ -1,0 +1,10 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:me.theghostin.nimble.utils$asInput(org.w3c.dom.events.Event)me.theghostin.nimble.utils/org.w3c.dom.events.-event/as-input.html
+$dokka.location:me.theghostin.nimble.utils$asSelect(org.w3c.dom.events.Event)me.theghostin.nimble.utils/org.w3c.dom.events.-event/as-select.html
+$dokka.location:me.theghostin.nimble.utils$checked#org.w3c.dom.events.Eventme.theghostin.nimble.utils/org.w3c.dom.events.-event/checked.html
+$dokka.location:me.theghostin.nimble.utils$selected#org.w3c.dom.events.Eventme.theghostin.nimble.utils/org.w3c.dom.events.-event/selected.html
+$dokka.location:me.theghostin.nimble.utils$setSelectionRange(org.w3c.dom.events.Event, kotlin.Int, kotlin.Int)me.theghostin.nimble.utils/org.w3c.dom.events.-event/set-selection-range.html
+$dokka.location:me.theghostin.nimble.utils$value#org.w3c.dom.events.Eventme.theghostin.nimble.utils/org.w3c.dom.events.-event/value.html
+me.theghostin.nimble
+me.theghostin.nimble.utils

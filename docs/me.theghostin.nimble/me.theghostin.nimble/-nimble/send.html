@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Nimble.send - me.theghostin.nimble</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">me.theghostin.nimble</a>&nbsp;/&nbsp;<a href="../index.html">me.theghostin.nimble</a>&nbsp;/&nbsp;<a
+        href="index.html">Nimble</a>&nbsp;/&nbsp;<a href=".">send</a><br/>
+<br/>
+<h1>send</h1>
+<a name="me.theghostin.nimble.Nimble$send(me.theghostin.nimble.Nimble.Msg)"></a>
+<code><span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span
+        class="identifier" id="me.theghostin.nimble.Nimble$send(me.theghostin.nimble.Nimble.Msg)/msg">msg</span><span
+        class="symbol">:</span>&nbsp;<span class="identifier">Msg</span><span class="symbol">)</span><span
+        class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+        class="identifier">Unit</span></a></code>
+<p>Send a <code>Msg</code> to the <code>inbox</code></p>
+<p>useful for updating the state of your application</p>
+<a name="me.theghostin.nimble.Nimble$send(((me.theghostin.nimble.Nimble.Msg)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span
+        class="identifier"
+        id="me.theghostin.nimble.Nimble$send(((me.theghostin.nimble.Nimble.Msg)))/promise">promise</span><span
+        class="symbol">:</span>&nbsp;<span class="identifier">&lt;ERROR CLASS&gt;</span><span class="symbol">&lt;</span><span
+        class="identifier">Msg</span><span class="symbol">&gt;</span><span class="symbol">)</span><span
+        class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+        class="identifier">Unit</span></a></code>
+<p>Send a <code>Promise</code></p>
+<p>Nimble handles consuming the <code>Promise</code> and sending the resolved <code>Msg</code> to your
+    <code>inbox</code>.</p>
+<a name="me.theghostin.nimble.Nimble$send(me.theghostin.nimble.Nimble.Msg, ((me.theghostin.nimble.Nimble.Msg)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span
+        class="identifier"
+        id="me.theghostin.nimble.Nimble$send(me.theghostin.nimble.Nimble.Msg, ((me.theghostin.nimble.Nimble.Msg)))/msg">msg</span><span
+        class="symbol">:</span>&nbsp;<span class="identifier">Msg</span><span class="symbol">, </span><span
+        class="identifier"
+        id="me.theghostin.nimble.Nimble$send(me.theghostin.nimble.Nimble.Msg, ((me.theghostin.nimble.Nimble.Msg)))/promise">promise</span><span
+        class="symbol">:</span>&nbsp;<span class="identifier">&lt;ERROR CLASS&gt;</span><span class="symbol">&lt;</span><span
+        class="identifier">Msg</span><span class="symbol">&gt;</span><span class="symbol">)</span><span
+        class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+        class="identifier">Unit</span></a></code>
+<p>Send a <code>Msg</code> and a <code>Promise</code></p>
+<p>Useful for updating the state right away while also firing off a promise to be processed.</p>
+</BODY>
+</HTML>

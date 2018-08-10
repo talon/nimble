@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Nimble.frame - me.theghostin.nimble</title>
+    <link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">me.theghostin.nimble</a>&nbsp;/&nbsp;<a href="../index.html">me.theghostin.nimble</a>&nbsp;/&nbsp;<a
+        href="index.html">Nimble</a>&nbsp;/&nbsp;<a href=".">frame</a><br/>
+<br/>
+<h1>frame</h1>
+<a name="me.theghostin.nimble.Nimble$frame(kotlin.Function0((kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">frame</span><span class="symbol">(</span><span
+        class="identifier"
+        id="me.theghostin.nimble.Nimble$frame(kotlin.Function0((kotlin.Unit)))/handler">handler</span><span
+        class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span
+        class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+        class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+        href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>A <code>frame</code> represents your <code>model</code> over time.</p>
+<p>TODO: currently only one extension can wrap <code>frame</code> at a time (ex: <code>html</code>)
+    is it worth making <code>frameHandler : </code>List&lt;Functiono&gt;`?
+    (I'm skeptical but want to consider)</p>
+<p><strong>Basic Usage:</strong></p>
+<pre><code>// ...
+fun main() {
+  app&lt;Msg, Model&gt;(Model()) {
+    inbox { /* ... */}
+    frame {
+      console.log(model)
+    }
+  }
+}
+</code></pre>
+<p><strong>Nimble Extension:</strong></p>
+<pre><code>fun &lt;Msg, Model&gt; Nimble&lt;Msg, Model&gt;.prefixedLogger(prefix: String) =
+  frame { console.log("$prefix $model) }
+</code></pre>
+</BODY>
+</HTML>
