@@ -11,6 +11,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.14"
         classpath "com.pascalwelsch.gitversioner:gitversioner:0.3.1"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
     }
 }
 
@@ -19,6 +20,7 @@ apply plugin: "kotlin2js"
 apply plugin: "maven-publish"
 apply plugin: 'org.jetbrains.dokka'
 apply plugin: "com.pascalwelsch.gitversioner"
+apply plugin: 'com.jfrog.bintray'
 
 repositories {
     jcenter()
@@ -35,7 +37,7 @@ dependencies {
 }
 
 group "me.theghostin"
-version "1.0.0"
+version "1.0.$gitVersion"
 
 task sourcesJar(type: Jar) {
     classifier = "sources"
@@ -77,3 +79,24 @@ dokka {
 }
 dokka.dependsOn cleanDocs
 build.dependsOn dokka
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['Nimble']
+    publish = true
+    pkg {
+        repo = 'me.theghostin'
+        name = 'nimble'
+        userOrg = user
+        licenses = ['GPL-3.0']
+    }
+}
+publishing {
+    publications {
+        Nimble(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+        }
+    }
+}

@@ -43,3 +43,11 @@ fun main() {
     }
 }
 ```
+
+# Usage 
+
+```kotlin
+repositories { 
+    maven("https://dl.bintray.com/spookyspecter/me.theghostin") 
+}
+```
