@@ -1,5 +1,5 @@
-# Nimble
-> Nimble is for writing web apps with Kotlin
+# Nimble [![Download](https://api.bintray.com/packages/spookyspecter/me.theghostin/nimble/images/download.svg?version=1.0.0) ](https://bintray.com/spookyspecter/me.theghostin/nimble/1.0.0/link)
+> Nimble is for writing web apps with Kotlin 
 
 ## [Docs](https://talon.github.io/nimble/me.theghostin.nimble/index.html)
 
@@ -44,10 +44,5 @@ fun main() {
 }
 ```
 
-# Usage 
-
-```kotlin
-repositories { 
-    maven("https://dl.bintray.com/spookyspecter/me.theghostin") 
-}
-```
+P.S.
+[nimble is on Bintray](https://bintray.com/spookyspecter/me.theghostin/nimble)

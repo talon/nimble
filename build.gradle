@@ -37,7 +37,7 @@ dependencies {
 }
 
 group "me.theghostin"
-version "1.0.$gitVersion"
+version "1.0.0"
 
 task sourcesJar(type: Jar) {
     classifier = "sources"
@@ -81,7 +81,7 @@ dokka.dependsOn cleanDocs
 build.dependsOn dokka
 
 bintray {
-    user = System.getenv('BINTRAY_USER')
+    user =  System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
     publications = ['Nimble']
     publish = true
