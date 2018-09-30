@@ -22,6 +22,10 @@ pluginManagement {
                     useModule("org.jetbrains.kotlin:kotlin-frontend-plugin:${requested.version}")
                 "com.pascalwelsch.gitversioner" ->
                     useModule("com.pascalwelsch.gitversioner:gitversioner:${requested.version}")
+                "org.jetbrains.dokka" ->
+                    useModule("org.jetbrains.dokka:dokka-gradle-plugin:${requested.version}")
+                "com.jfrog.bintray" ->
+                    useModule("com.jfrog.bintray.gradle:gradle-bintray-plugin:${requested.version}")
             }
         }
     }
