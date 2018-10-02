@@ -169,7 +169,6 @@ abstract class Nimble<Msg, Model>(
         launch {
             for (msg in it) {
                 model = inboxHandler(msg)
-                println("Nimble: frame")
                 frameHandler()
             }
         }
