@@ -1,7 +1,5 @@
 import com.jfrog.bintray.gradle.BintrayExtension
 import com.jfrog.bintray.gradle.tasks.BintrayUploadTask
-import org.jetbrains.dokka.gradle.DokkaPlugin
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.dsl.Coroutines
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
@@ -12,7 +10,8 @@ plugins {
     idea
     id("kotlin-platform-js") version "1.2.71"
     `maven-publish`
-    id("org.jetbrains.dokka") version "0.9.14"
+    // TODO: https://github.com/Kotlin/dokka/issues/212
+    // id("org.jetbrains.dokka") version "0.9.17"
     id("com.jfrog.bintray") version "1.8.4"
 }
 
@@ -74,19 +73,14 @@ tasks {
             main = "call"
         }
     }
-    "wrapper"(Wrapper::class) {
-        // FIXME: while this issue (https://github.com/Kotlin/dokka/issues/265) is fixed in newer dokka plugins
-        // newer dokka plugins don't work because of this https://github.com/Kotlin/dokka/issues/212
-        gradleVersion = "4.4.1" //version required
-    }
     "cleanDocs"(Delete::class) {
         delete("$rootDir/docs")
     }
-    "dokka"(DokkaTask::class) {
-        outputFormat = "html"
-        outputDirectory = "$rootDir/docs"
-        impliedPlatforms = listOf("JS").toMutableList()
-        // reportUndocumented = false
-        dependsOn("cleanDocs")
-    }
+    // "dokka"(DokkaTask::class) {
+    //     outputFormat = "html"
+    //     outputDirectory = "$rootDir/docs"
+    //     impliedPlatforms = listOf("JS").toMutableList()
+    //     // reportUndocumented = false
+    //     dependsOn("cleanDocs")
+    // }
 }
