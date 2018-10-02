@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.dsl.Coroutines
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 group = "me.theghostin"
-version = "1.0-SNAPSHOT"
+version = "1.0.2"
 
 plugins {
     idea
