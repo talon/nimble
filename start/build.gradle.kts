@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinJsDcePlugin
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 import org.jetbrains.kotlin.gradle.tasks.KotlinJsDce
 
-group = "me.theghostin"
+group = ""
 version = "1.0-SNAPSHOT"
 
 plugins {
@@ -33,7 +33,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:0.6.2")
     implementation("org.jetbrains:kotlin-extensions:1.0.1-pre.54-kotlin-1.2.70")
     implementation("br.danfma.kodando:kodando-history:0.5.0")
-    compile("me.theghostin:me.theghostin.nimble:1.0.1")
+    compile("me.theghostin:nimble:1.0.2")
 }
 
 // nimble - core
@@ -44,18 +44,15 @@ configure<KotlinFrontendExtension> {
     } }
 }
 configure<NpmExtension> {
-    // async
-    ////
-    dependency("kotlinx-coroutines-core")
-
     // nimble - core
     ////
+    dependency("kotlinx-coroutines-core")
     dependency("history")
     dependency("nanomorph")
-    devDependency("html-webpack-plugin")
 
-    // nimble - css
+    // webpack - css
     ////
+    devDependency("html-webpack-plugin")
     devDependency("style-loader")
     devDependency("css-loader")
     devDependency("postcss-loader")
@@ -63,7 +60,7 @@ configure<NpmExtension> {
     devDependency("postcss-preset-env")
     devDependency("cssnano")
 
-    // nimble - images
+    // webpack - images
     ////
     devDependency("file-loader")
     devDependency("image-webpack-loader")

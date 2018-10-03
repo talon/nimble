@@ -42,5 +42,9 @@ fun main() {
 }
 ```
 
-P.S.
-[nimble is on Bintray](https://bintray.com/spookyspecter/me.theghostin/nimble)
+# Getting started
+
+To get up and running right away 
+- copy the `start` folder at the root of this repo
+- and use `gradelw -t run` to start the dev server at http://localhost:8088
+
