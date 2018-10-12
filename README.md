@@ -8,7 +8,7 @@ writing web apps in Kotlin fun and easy!
 ## Example App
 
 **Simple Example:**
-```
+```kotlin
 import me.theghostin.nimble.app
 import me.theghostin.nimble.html
 import kotlinx.html.a
@@ -46,7 +46,7 @@ fun main() {
 
 **Inbox Example:**
 
-```
+```kotlin
 import me.theghostin.nimble.app
 import me.theghostin.nimble.html
 import kotlinx.html.a
