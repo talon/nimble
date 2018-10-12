@@ -31,13 +31,6 @@ data class Update(val model: Model) : Msg()
 val String.resource: dynamic get() =
     kotlinext.js.require("../../resources/$this")
 
-// use this to include any file type (supported by webpack.config.d)
-// from the `src/main/resources` folder
-// example: `img(src = "my-icon.png".resource) {}`
-// NOTE: the KotlinDCE gradle plugin changes this path.
-val String.resource: dynamic get() =
-    kotlinext.js.require("../../resources/$this")
-
 fun main(args: Array<String>) {
     // see webpack.config.d/css.js for plugins
     "main.css".resource
