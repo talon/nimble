@@ -33,7 +33,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:0.6.2")
     implementation("org.jetbrains:kotlin-extensions:1.0.1-pre.54-kotlin-1.2.70")
     implementation("br.danfma.kodando:kodando-history:0.5.0")
-    compile("me.theghostin:nimble:1.0.2")
+    compile("me.theghostin:nimble:1.0.3")
 }
 
 // nimble - core

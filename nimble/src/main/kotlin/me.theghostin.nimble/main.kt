@@ -13,10 +13,10 @@ import kotlin.js.Promise
  *
  * **Some things to know:**
  *
- * - The `inbox` receives `Msg`s and returns new copies of `Model`
- * - For each `Msg` sent to `inbox` the `html` will be rendered
- * - The latest result of `inbox` is always available as `model`
- * - `send` is also available for sending `Msg`s and `Promise`s
+ * - the `inbox` receives `Msg`s and returns new copies of `Model`
+ * - the latest result of `inbox` is always available as `model`
+ * - use `send` to deliver `Msg`s to the inbox
+ * - the `html` is automatically rendered after each `Msg` is processed.
  *
  * **Example:**
  * ```
@@ -29,15 +29,9 @@ import kotlin.js.Promise
  * data class Model(val switch: Boolean = false)
  *
  * sealed class Msg
- * object Flip : Msg()
  *
  * fun main() {
  *     app<Msg, Model>(Model()) {
- *
- *         inbox { when (it) {
- *             Flip -> model.copy(switch = !model.switch)
- *         }}
- *
  *         html {
  *             h1 { +when (model.switch) {
  *                 true -> "On"
@@ -45,10 +39,9 @@ import kotlin.js.Promise
  *             } }
  *             button {
  *                 +"flip"
- *                 onClickFunction = { send(Flip) }
+ *                 onClickFunction = { send(model.copy(switch = !model.switch)) }
  *             }
  *         }
- *
  *     }
  * }
  * ```
@@ -107,7 +100,7 @@ abstract class Nimble<Msg, Model>(
     /**
      * Handle updates to the `model`
      *
-     * The latest result of `inbox` is always available as `model` inside the `app` scope
+     * The latest result of `inbox` is available as `model` inside the `app` scope
      *
      * **Example:**
      * ```
@@ -163,6 +156,25 @@ abstract class Nimble<Msg, Model>(
             messages.send(msg)
             messages.send(promise.await())
         }
+    }
+
+    /**
+     * Send a new `Model`
+     *
+     * This is a simpler way to update the application state
+     * best used in tandem with `model.copy`
+     *
+     * (without this every app would implement it on their own with `Msg`
+     * this feels much more understandable for simple apps)
+     *
+     * **Example**
+     * ```
+     * send(model.copy(switch = true))
+     * ```
+     */
+    fun send(m: Model) {
+        model = m
+        frameHandler()
     }
 
     private val messages: Channel<Msg> = Channel<Msg>().also {

@@ -20,9 +20,6 @@ fun Model.flip() = when (title) {
 
 // Messages describe in what ways your app model can be updated
 sealed class Msg
-// this is a generic way to update the entire app model
-// you will add new messages as you go
-data class Update(val model: Model) : Msg()
 
 // use this to include any file type (supported by webpack.config.d)
 // from the `src/main/resources` folder
@@ -36,12 +33,6 @@ fun main(args: Array<String>) {
     "main.css".resource
 
     app<Msg, Model>(Model()) {
-        // the inbox handles everything that you `send` in your app
-        // `Msg`s come in and a new `model` is returned.
-        inbox { when (it) {
-            is Update -> it.model
-        } }
-
         // automatically re-renders after every `Msg` is processed
         html {
             // `model` is always the latest result of `inbox`
@@ -49,9 +40,9 @@ fun main(args: Array<String>) {
 
             button {
                 +"⚒"
-                // NOTE: you can send `Msg` or `Promise<Msg>`
+                // NOTE: you can send `Msg` or `Promise<Msg>` as well as `Model`
                 // promises are useful for things like HTTP requests to APIs
-                onClickFunction = { send(Update(model.flip())) }
+                onClickFunction = { send(model.flip()) }
             }
         }
     }
