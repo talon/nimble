@@ -5,6 +5,8 @@ writing web apps in Kotlin fun and easy!
 
 > simple should be simple...
 
+## Example App
+
 **Simple Example:**
 ```
 import me.theghostin.nimble.app

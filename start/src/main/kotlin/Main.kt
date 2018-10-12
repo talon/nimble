@@ -1,4 +1,4 @@
-import kotlinx.html.button
+import kotlinx.html.a
 import kotlinx.html.h1
 import kotlinx.html.js.onClickFunction
 import me.theghostin.nimble.app
@@ -20,6 +20,16 @@ fun Model.flip() = when (title) {
 
 // Messages describe in what ways your app model can be updated
 sealed class Msg
+// this is a generic way to update the entire app model
+// you will add new messages as you go
+data class Update(val model: Model) : Msg()
+
+// use this to include any file type (supported by webpack.config.d)
+// from the `src/main/resources` folder
+// example: `img(src = "my-icon.png".resource) {}`
+// NOTE: the KotlinDCE gradle plugin changes this path.
+val String.resource: dynamic get() =
+    kotlinext.js.require("../../resources/$this")
 
 // use this to include any file type (supported by webpack.config.d)
 // from the `src/main/resources` folder
@@ -38,7 +48,7 @@ fun main(args: Array<String>) {
             // `model` is always the latest result of `inbox`
             h1 { +model.title }
 
-            button {
+            a {
                 +"⚒"
                 // NOTE: you can send `Msg` or `Promise<Msg>` as well as `Model`
                 // promises are useful for things like HTTP requests to APIs
