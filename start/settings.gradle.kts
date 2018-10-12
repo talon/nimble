@@ -1,3 +1,5 @@
+rootProject.name = "a-nimble-app"
+
 pluginManagement {
     repositories {
         gradlePluginPortal()

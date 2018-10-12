@@ -20,9 +20,6 @@ fun Model.flip() = when (title) {
 
 // Messages describe in what ways your app model can be updated
 sealed class Msg
-// this is a generic way to update the entire app model
-// you will add new messages as you go
-data class Update(val model: Model) : Msg()
 
 // use this to include any file type (supported by webpack.config.d)
 // from the `src/main/resources` folder
