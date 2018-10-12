@@ -5,8 +5,6 @@ writing web apps in Kotlin fun and easy!
 
 > simple should be simple...
 
-## Example App
-
 **Simple Example:**
 ```kotlin
 import me.theghostin.nimble.app
@@ -61,7 +59,7 @@ data class Set(val switch: Boolean) : Msg()
 fun main() {
     app<Msg, Model>(Model()) {
         inbox { when (it) {
-          is Set -> mode.copy(switch = it.switch)
+          is Set -> model.copy(switch = it.switch)
         } }
         
         html {
