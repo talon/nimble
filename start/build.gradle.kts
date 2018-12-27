@@ -11,8 +11,8 @@ version = "1.0-SNAPSHOT"
 
 plugins {
     idea
-    id("kotlin-platform-js") version "1.2.71"
-    id("kotlinx-serialization") version "0.6.2"
+    id("kotlin-platform-js") version "1.3.11"
+    id("kotlinx-serialization") version "1.3.11"
     id("org.jetbrains.kotlin.frontend") version "0.0.37"
 }
 
@@ -30,10 +30,10 @@ dependencies {
     compile(kotlin("stdlib-js"))
     compile("org.jetbrains.kotlinx:kotlinx-html-js:0.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:0.24.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:0.6.2")
     implementation("org.jetbrains:kotlin-extensions:1.0.1-pre.54-kotlin-1.2.70")
     implementation("br.danfma.kodando:kodando-history:0.5.0")
-    compile("me.theghostin:nimble:1.0.3")
+    compile("org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:0.9.1")
+    compile("me.theghostin:nimble:2.0.0")
 }
 
 // nimble - core

@@ -14,7 +14,7 @@ pluginManagement {
                 "kotlin-platform-jvm" ->
                     useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
                 "kotlinx-serialization" ->
-                    useModule("org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:${requested.version}")
+                    useModule("org.jetbrains.kotlin:kotlin-serialization:${requested.version}")
                 "org.jetbrains.kotlin.frontend" ->
                     useModule("org.jetbrains.kotlin:kotlin-frontend-plugin:${requested.version}")
                 "com.pascalwelsch.gitversioner" ->
