@@ -2,9 +2,10 @@
 
 package me.theghostin.nimble
 
-import kotlinx.coroutines.experimental.await
-import kotlinx.coroutines.experimental.channels.Channel
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.await
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.launch
 import kotlin.js.Promise
 
 /**
@@ -126,7 +127,7 @@ abstract class Nimble<Msg, Model>(
         inboxHandler = inbox
     }
 
-    private var inboxHandler: (Msg) -> Model = { _ -> model }
+    private var inboxHandler: (Msg) -> Model = { model }
 
     /**
      * Send a `Msg` to the `inbox`
@@ -134,7 +135,7 @@ abstract class Nimble<Msg, Model>(
      * useful for updating the state of your application
      */
     fun send(msg: Msg) {
-        launch { messages.send(msg) }
+        GlobalScope.launch { messages.send(msg) }
     }
 
     /**
@@ -143,7 +144,7 @@ abstract class Nimble<Msg, Model>(
      * Nimble handles consuming the `Promise` and sending the resolved `Msg` to your `inbox`.
      */
     fun send(promise: Promise<Msg>) {
-        launch { messages.send(promise.await()) }
+        GlobalScope.launch { messages.send(promise.await()) }
     }
 
     /**
@@ -152,7 +153,7 @@ abstract class Nimble<Msg, Model>(
      * Useful for updating the state right away while also firing off a promise to be processed.
      */
     fun send(msg: Msg, promise: Promise<Msg>) {
-        launch {
+        GlobalScope.launch {
             messages.send(msg)
             messages.send(promise.await())
         }
@@ -178,7 +179,7 @@ abstract class Nimble<Msg, Model>(
     }
 
     private val messages: Channel<Msg> = Channel<Msg>().also {
-        launch {
+        GlobalScope.launch {
             for (msg in it) {
                 model = inboxHandler(msg)
                 frameHandler()
@@ -187,7 +188,7 @@ abstract class Nimble<Msg, Model>(
     }
 
     init {
-        init?.let { launch { messages.send(it.await()) } }
+        init?.let { GlobalScope.launch { messages.send(it.await()) } }
         frameHandler()
     }
 }

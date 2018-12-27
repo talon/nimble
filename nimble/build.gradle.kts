@@ -4,11 +4,11 @@ import org.jetbrains.kotlin.gradle.dsl.Coroutines
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 group = "me.theghostin"
-version = "1.0.3"
+version = "2.0.0"
 
 plugins {
     idea
-    id("kotlin-platform-js") version "1.2.71"
+    id("kotlin-platform-js") version "1.3.11"
     `maven-publish`
     // TODO: https://github.com/Kotlin/dokka/issues/212
     // id("org.jetbrains.dokka") version "0.9.17"
@@ -25,13 +25,7 @@ dependencies {
     implementation(kotlin("stdlib-js"))
     implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.6.8")
     implementation("br.danfma.kodando:kodando-history:0.3.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:0.23.3")
-}
-
-kotlin {
-    experimental {
-        coroutines = Coroutines.ENABLE
-    }
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.1.0")
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
