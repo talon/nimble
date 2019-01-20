@@ -26,7 +26,7 @@ sealed class Msg
 // example: `img(src = "my-icon.png".resource) {}`
 // NOTE: the KotlinDCE gradle plugin changes this path.
 val String.resource: dynamic get() =
-    kotlinext.js.require("../../resources/$this")
+    kotlinext.js.require("../resources/main/$this")
 
 fun main(args: Array<String>) {
     // see webpack.config.d/css.js for plugins

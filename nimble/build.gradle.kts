@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.Coroutines
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 group = "me.theghostin"
-version = "2.0.0"
+version = "2.1.0"
 
 plugins {
     idea
@@ -23,14 +23,14 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-js"))
-    implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.6.8")
-    implementation("br.danfma.kodando:kodando-history:0.3.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.1.0")
+    api("br.danfma.kodando:kodando-history:0.3.0")
+    api("org.jetbrains.kotlinx:kotlinx-html-js:0.6.8")
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
     classifier = "sources"
-    from(java.sourceSets["main"].output)
+    from(sourceSets["main"].output)
 }
 
 bintray {
@@ -67,9 +67,9 @@ tasks {
             main = "call"
         }
     }
-    "cleanDocs"(Delete::class) {
-        delete("$rootDir/docs")
-    }
+    // "cleanDocs"(Delete::class) {
+    //     delete("$rootDir/docs")
+    // }
     // "dokka"(DokkaTask::class) {
     //     outputFormat = "html"
     //     outputDirectory = "$rootDir/docs"

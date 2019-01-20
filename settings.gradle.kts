@@ -1,20 +1,18 @@
 rootProject.name = "nimble-web"
 
-include("nimble")
+includeBuild("nimble")
 include("start")
 
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        maven("https://dl.bintray.com/kotlin/kotlin-eap")
+        maven("https://kotlin.bintray.com/kotlin-eap")
         maven("https://kotlin.bintray.com/kotlinx")
     }
     resolutionStrategy {
         eachPlugin {
             when (requested.id.id) {
-                "kotlin-platform-js",
-                "kotlin-platform-common",
-                "kotlin-platform-jvm" ->
+                "kotlin-platform-js" ->
                     useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
                 "kotlinx-serialization" ->
                     useModule("org.jetbrains.kotlin:kotlin-serialization:${requested.version}")

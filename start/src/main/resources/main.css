@@ -1,4 +1,41 @@
+:root {
+    /* Palette color codes */
+    /* Palette URL: http://paletton.com/#uid=35a0u0kbCIC2RYD76S3g5xGkmrN */
+    --color-primary-0: #E290BE;
+    --color-primary-1: #FBE5F2;
+    --color-primary-2: #F1BCDA;
+    --color-primary-3: #CF67A2;
+    --color-primary-4: #B24181;
+
+    --color-secondary-0: #90E290;
+    --color-secondary-1: #E5FBE5;
+    --color-secondary-2: #BBF1BB;
+    --color-secondary-3: #67CF67;
+    --color-secondary-4: #41B141;
+
+    --color-tertiary-0: #FFFFA2;
+    --color-tertiary-1: #FFFFE8;
+    --color-tertiary-2: #FFFFC6;
+    --color-tertiary-3: #FFFF7F;
+    --color-tertiary-4: #DDDD51;
+}
+
+/*
+ * base
+ */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: var(--color-secondary-1);
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+body > div {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1em;
 }
